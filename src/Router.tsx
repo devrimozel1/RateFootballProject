@@ -23,6 +23,7 @@ function Router() {
       <Tab.Navigator screenOptions={{
         headerShown: false,
         tabBarStyle:{
+          marginTop:10,
           width: '80%',
           marginLeft: '10%'
         }

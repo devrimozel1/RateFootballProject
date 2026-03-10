@@ -11,9 +11,12 @@ function Profile() {
         name={ScreenName}
       />
       <ScrollView>
+        <View style={{ gap: 10 }}>
 
+        </View>
       </ScrollView>
     </View>
+
 
   )
 }
