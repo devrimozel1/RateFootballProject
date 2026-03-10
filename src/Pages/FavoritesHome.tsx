@@ -1,6 +1,6 @@
 import React from 'react'
 import HeaderComp from './HeaderComp'
-import { View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 
 function FavoritesHome() {
     const ScreenName = "Favorites"
@@ -9,7 +9,13 @@ function FavoritesHome() {
             <HeaderComp
                 name={ScreenName}
             />
+            <ScrollView>
+                <View style={{ gap: 10 }}>
+
+                </View>
+            </ScrollView>
         </View>
+
 
     )
 }
