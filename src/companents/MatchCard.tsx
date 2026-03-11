@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import GalaIcon from "../images/gala.png"
+import LiveIcon from "../images/live.png"
 
 function MatchCard() {
 
@@ -15,9 +17,9 @@ function MatchCard() {
     return (
         <View style={{ alignItems: "center", }}>
             <TouchableOpacity style={style.matchcardlow} onPress={isClick}>
-                <Image style={style.teamLogo}></Image>
-                <View style={style.scoreView}><Text style={style.scoreText}>3 - 1</Text></View>
-                <Image style={style.teamLogo}></Image>
+                <Image style={style.teamLogo} source={GalaIcon} resizeMode='contain'></Image>
+                <View style={style.scoreView}><Text style={style.scoreText}>1 - 0</Text></View>
+                <Image style={style.teamLogo} source={LiveIcon} resizeMode='contain'></Image>
             </TouchableOpacity>
             <View style={cliced ? style.matchcardlong : ""}></View>
         </View>
@@ -31,7 +33,7 @@ const style = StyleSheet.create({
         height: 100,
         borderRadius: 20,
         width: "90%",
-        backgroundColor: "#FF6044",
+        backgroundColor: "darkgreen",
         justifyContent: "space-around",
         flexDirection: "row",
         alignItems: "center"
@@ -40,7 +42,7 @@ const style = StyleSheet.create({
     matchcardlong: {
         height: 400,
         width: "90%",
-        backgroundColor: "#FF6044",
+        backgroundColor: "darkgreen",
         justifyContent: "space-around",
         flexDirection: "row",
         alignItems: "center",
@@ -50,8 +52,6 @@ const style = StyleSheet.create({
     teamLogo: {
         width: 70,
         height: 70,
-        borderWidth: 1,
-        borderBlockColor: "black",
         borderRadius: 10
     },
 

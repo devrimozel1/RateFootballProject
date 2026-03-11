@@ -3,11 +3,17 @@ import HeaderComp from './HeaderComp'
 import { Button, ScrollView, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { TextInput } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, NavigationProp } from '@react-navigation/native'
+import Register from './Register'
+
+type RootStackParamList = {
+  Profile: undefined
+  Register: undefined
+}
 
 function Profile() {
   const ScreenName = "Profile"
-  const navigation=useNavigation()
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>()
 
 const handleProfile=()=>{
   navigation.navigate('Register')
