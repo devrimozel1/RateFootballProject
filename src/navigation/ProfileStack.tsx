@@ -5,16 +5,14 @@ import Profile from '../Pages/Profile';
 
 function ProfileStack() {
 
-      const Stack = createNativeStackNavigator();
-    
+  const Stack = createNativeStackNavigator();
+
 
   return (
-     <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name='Profile' component={Profile}/>
-        <Stack.Screen name='Register' component={Register}/>
-
-
-      </Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='Profile' component={Profile} />
+      <Stack.Screen name='Register' component={Register} />
+    </Stack.Navigator>
   )
 }
 

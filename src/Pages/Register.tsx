@@ -1,33 +1,43 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import HeaderComp from './HeaderComp'
 
 
 function Register() {
 
     const navigation = useNavigation()
+    const ScreenName = "Register"
     return (
-        <SafeAreaView style={{flex:1, backgroundColor:"#f5f6fa"}} >
-            <View style={style.container}>
-                <TextInput style={style.input} placeholder='İsim'></TextInput>
-                <TextInput style={style.input} placeholder='Soyisim'></TextInput>
-                <View style={style.telefon}>
-                    <TextInput style={style.telInput} placeholder='🇹🇷+90'></TextInput>
-                    <TextInput style={style.telInput2} placeholder='Telefon Numarası'></TextInput>
+        <View>
+            <HeaderComp name={ScreenName} />
+
+            <ScrollView>
+                <View style={style.container}>
+                    <TextInput style={style.input} placeholder='İsim'></TextInput>
+                    <TextInput style={style.input} placeholder='Soyisim'></TextInput>
+                    <View style={style.telefon}>
+                        <TextInput style={style.telInput} placeholder='🇹🇷+90'></TextInput>
+                        <TextInput style={style.telInput2} placeholder='Telefon Numarası'></TextInput>
+                    </View>
+                    <TextInput style={style.input} placeholder='E-mail'></TextInput>
+                    <TextInput style={style.input} placeholder='Şifre'></TextInput>
+
+                    <TouchableOpacity style={style.button}>
+                        <Text style={style.buttonText}>Kayıt Ol</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => {
+                        navigation.goBack()
+                    }} style={style.buttonalttext}><Text>Zaten üye misiniz? <Text style={style.title2}>Giriş yapın.</Text></Text></TouchableOpacity>
                 </View>
-                <TextInput style={style.input} placeholder='E-mail'></TextInput>
-                <TextInput style={style.input} placeholder='Şifre'></TextInput>
+            </ScrollView>
 
-                <TouchableOpacity style={style.button}>
-                    <Text style={style.buttonText}>Kayıt Ol</Text>
-                </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => {
-                    navigation.goBack()
-                }} style={style.buttonalttext}><Text>Zaten üye misiniz? <Text style={style.title2}>Giriş yapın.</Text></Text></TouchableOpacity>
-            </View>
-        </SafeAreaView>
+
+        </View>
+
 
 
     )
@@ -35,9 +45,9 @@ function Register() {
 
 const style = StyleSheet.create({
     container: {
-       flex:1,
-        padding:25,
-        justifyContent:"center"
+        flex: 1,
+        padding: 25,
+        justifyContent: "center",
     },
     input: {
         backgroundColor: "white",
@@ -73,7 +83,7 @@ const style = StyleSheet.create({
         padding: 15,
         borderRadius: 10,
         alignItems: "center",
-        
+
     },
     buttonText: {
         color: "white",

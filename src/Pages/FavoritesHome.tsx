@@ -11,6 +11,7 @@ function FavoritesHome() {
             />
             <ScrollView>
                 <View style={{ gap: 10 }}>
+                    
 
                 </View>
             </ScrollView>

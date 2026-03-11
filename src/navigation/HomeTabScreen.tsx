@@ -13,7 +13,7 @@ function HomeTabScreen() {
         <Tab.Navigator screenOptions={{
             headerShown: false,
             tabBarStyle: {
-             
+                backgroundColor:"red"
             }
         }}>
             <Tab.Screen name='Home' component={HomeScreen} options={{
