@@ -45,8 +45,6 @@ const style = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         borderRadius:20
-       
-
     },
 
     teamLogo: {
