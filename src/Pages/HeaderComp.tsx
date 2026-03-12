@@ -3,28 +3,44 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'rea
 import { SafeAreaView } from 'react-native-safe-area-context'
 import LogoIcon from "../images/LogoBall.png"
 import ExitIcon from "../images/exit.png"
+import LinearGradient from 'react-native-linear-gradient'
 
 function HeaderComp({ name }: { name: string }) {
     return (
         <SafeAreaView style={{ alignItems: "center" }} >
-            <View style={style.menuTopHead}>
-                <View style={{ width: 70, alignItems: "center" }}>
-                    <Image style={style.menuTopImage} source={LogoIcon}></Image>
+            <LinearGradient
+                colors={["rgb(170, 75, 107)", "rgb(107, 107, 131)", "rgb(59, 141, 153)"]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={style.gradientContainer}
+            >
+                <View style={style.menuTopHead}>
+                    <View style={{ width: 70, alignItems: "center" }}>
+                        <Image style={style.menuTopImage} source={LogoIcon}></Image>
+                    </View>
+                    <View style={{ width: 150, alignItems: "center" }}>
+                        <Text style={style.menuTopName}>{name} </Text>
+                    </View>
+                    <View style={{ width: 70, alignItems: "center" }}>
+                        <TouchableOpacity>
+                            <Image style={style.menuTopImage} source={ExitIcon}></Image>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={{ width: 150, alignItems: "center" }}>
-                    <Text style={style.menuTopName}>{name} </Text>
-                </View>
-                <View style={{ width: 70, alignItems: "center" }}>
-                    <TouchableOpacity>
-                        <Image style={style.menuTopImage} source={ExitIcon}></Image>
-                    </TouchableOpacity>
-                </View>
-            </View>
+            </LinearGradient>
+
         </SafeAreaView>
     )
 }
 
 const style = StyleSheet.create({
+    gradientContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 20,      
+        overflow: "hidden",    
+    },
     menuTopHead: {
         flexDirection: "row",
         height: 70,
@@ -33,8 +49,6 @@ const style = StyleSheet.create({
         textAlign: "center",
         justifyContent: "space-around",
         width: "90%",
-        backgroundColor: "#007fbd"
-
     },
     menuTopImage: {
         width: 40,
