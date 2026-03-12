@@ -7,14 +7,18 @@ import HomeIcon from "../images/home.png"
 import LiveIcon from "../images/football.png"
 import { Image } from 'react-native';
 import ProfileStack from './ProfileStack';
+
+     const Tab = createBottomTabNavigator();
+
 function HomeTabScreen() {
-    const Tab = createBottomTabNavigator();
     return (
         <Tab.Navigator screenOptions={{
             headerShown: false,
-            tabBarStyle: {
-                backgroundColor:"red"
+            tabBarStyle:{
+                backgroundColor:"#FF6044"
             }
+            
+           
         }}>
             <Tab.Screen name='Home' component={HomeScreen} options={{
                 headerShown: false, tabBarIcon: (({ size }) => {

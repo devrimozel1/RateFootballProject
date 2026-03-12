@@ -3,11 +3,8 @@ import React from 'react'
 import Register from '../Pages/Register';
 import Profile from '../Pages/Profile';
 
+const Stack = createNativeStackNavigator();
 function ProfileStack() {
-
-  const Stack = createNativeStackNavigator();
-
-
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name='Profile' component={Profile} />

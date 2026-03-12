@@ -9,8 +9,9 @@ import HomeTab from './HomeTab';
 import Register from '../Pages/Register';
 import ProfileStack from './ProfileStack';
 
-function Router() {
   const Stack = createNativeStackNavigator();
+
+function Router() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
