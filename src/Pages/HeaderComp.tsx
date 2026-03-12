@@ -35,11 +35,7 @@ function HeaderComp({ name }: { name: string }) {
 
 const style = StyleSheet.create({
     gradientContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 20,      
-        overflow: "hidden",    
+        borderRadius: 20  
     },
     menuTopHead: {
         flexDirection: "row",
