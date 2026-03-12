@@ -33,7 +33,7 @@ const style = StyleSheet.create({
         height: 100,
         borderRadius: 20,
         width: "90%",
-        backgroundColor: "darkgreen",
+        backgroundColor: "#8ec06c",
         justifyContent: "space-around",
         flexDirection: "row",
         alignItems: "center"
@@ -42,7 +42,7 @@ const style = StyleSheet.create({
     matchcardlong: {
         height: 400,
         width: "90%",
-        backgroundColor: "darkgreen",
+        backgroundColor: "#8ec06c",
         justifyContent: "space-around",
         flexDirection: "row",
         alignItems: "center",

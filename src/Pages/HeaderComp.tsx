@@ -33,7 +33,7 @@ const style = StyleSheet.create({
         textAlign: "center",
         justifyContent: "space-around",
         width: "90%",
-        backgroundColor: "#FF6044"
+        backgroundColor: "#007fbd"
 
     },
     menuTopImage: {
