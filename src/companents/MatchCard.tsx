@@ -16,7 +16,7 @@ function MatchCard() {
     }
     return (
         <View style={{ alignItems: "center", }}>
-            <TouchableOpacity style={style.matchcardlow} onPress={isClick}>
+            <TouchableOpacity style={cliced ? style.matchcarlowopen : style.matchcardlow} onPress={isClick}>
                 <Image style={style.teamLogo} source={GalaIcon} resizeMode='contain'></Image>
                 <View style={style.scoreView}><Text style={style.scoreText}>1 - 0</Text></View>
                 <Image style={style.teamLogo} source={LiveIcon} resizeMode='contain'></Image>
@@ -33,20 +33,33 @@ const style = StyleSheet.create({
         height: 100,
         borderRadius: 20,
         width: "90%",
-        backgroundColor: "darkgreen",
+        backgroundColor: "#17b978",
         justifyContent: "space-around",
         flexDirection: "row",
         alignItems: "center"
     },
 
-    matchcardlong: {
-        height: 400,
+    matchcarlowopen: {
+        height: 100,
         width: "90%",
-        backgroundColor: "darkgreen",
+        backgroundColor: "#17b978",
         justifyContent: "space-around",
         flexDirection: "row",
         alignItems: "center",
-        borderRadius:20
+        borderTopLeftRadius:20,
+        borderTopEndRadius:20
+
+    },
+
+    matchcardlong: {
+        height: 400,
+        width: "90%",
+        backgroundColor: "#17b978",
+        justifyContent: "space-around",
+        flexDirection: "row",
+        alignItems: "center",
+        borderEndStartRadius:20,
+        borderEndEndRadius:20
     },
 
     teamLogo: {
