@@ -102,9 +102,8 @@ function Register() {
 
     return (
         <View style={style.container}>
-            <HeaderComp name={ScreenName} />
-            <TextInput style={style.input} placeholder='İsim' onChangeText={(text) => setName(text)}></TextInput>
-            <TextInput style={style.input} placeholder='Soyisim' onChangeText={(text) => setSurname(text)}></TextInput>
+            <TextInput style={style.input} placeholder='İsim'></TextInput>
+            <TextInput style={style.input} placeholder='Soyisim'></TextInput>
             <View style={style.telefon}>
                 <TextInput style={style.telInput} placeholder='🇹🇷+90'></TextInput>
                 <TextInput style={style.telInput2} placeholder='Telefon Numarası' onChangeText={(text) => setPhone(text)}></TextInput>

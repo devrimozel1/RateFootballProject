@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HeaderComp from './HeaderComp'
 import { Alert, Button, ScrollView, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import { StyleSheet } from 'react-native'
@@ -7,51 +7,68 @@ import { useNavigation, NavigationProp } from '@react-navigation/native'
 import Register from './Register'
 
 type RootStackParamList = {
-  Profile: undefined
+  Login: undefined
   Register: undefined
 }
 
 function Login() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+
   const ScreenName = "Login"
   const navigation = useNavigation<NavigationProp<RootStackParamList>>()
 
-  const handleLogin = () => {
-    navigation.navigate('Register')
+  const user = {
+    email: "test@test.com",
+    password: "1234"
   }
 
-  const handleProfile = () => {
-    navigation.navigate('Profile')
+  const handleLogin = () => {
+
+    if (email === user.email && password === user.password) {
+      Alert.alert("Giriş başarılı. 🎉")
+      navigation.navigate('Register')
+    } else {
+      Alert.alert("Email veya şifre hatalı ❌")
+    }
+  }
+
+  const handleRegister=()=>{
+    navigation.navigate('Register')
   }
 
 
   return (
-    <View>
+    <View style={{height:1000}}>
       <HeaderComp
         name={ScreenName}
       />
-      <ScrollView >
+      <ScrollView>
         <View style={styles.container}>
           <TextInput placeholder='Email'
-            style={styles.input}></TextInput>
+            style={styles.input}
+            onChangeText={(text) => setEmail(text)}></TextInput>
 
           <TextInput placeholder='Şifre'
             style={styles.input}
+            onChangeText={(text) => setPassword(text)}
           ></TextInput>
-          <TouchableOpacity style={styles.button} onPress={handleProfile}><Text style={styles.buttonText}>Giriş Yap</Text></TouchableOpacity>
-          <TouchableOpacity onPress={handleLogin}><Text style={{ margin: 10 }} >Hesabınız yok mu?<Text style={styles.text} >Kayıt olun.</Text></Text></TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={handleLogin}><Text style={styles.buttonText}>Giriş Yap</Text></TouchableOpacity>
+          <TouchableOpacity onPress={handleRegister}><Text style={{ margin: 10 }} >Hesabınız yok mu?<Text style={styles.text} >Kayıt olun.</Text></Text></TouchableOpacity>
         </View>
       </ScrollView>
+
+
     </View>
-
-
   )
 }
 
+
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 24,
+    height:1000,
+    gap:10
   },
   input: {
     backgroundColor: "white",
@@ -84,5 +101,6 @@ const styles = StyleSheet.create({
 
   }
 })
+
 
 export default Login
