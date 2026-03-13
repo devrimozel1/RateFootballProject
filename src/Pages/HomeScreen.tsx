@@ -9,7 +9,7 @@ function HomeScreen() {
     const ScreenName = "RateFootball";
 
     return (
-        <View style={{ height: 1000, backgroundColor: "#f3cf7a" }}>
+        <View style={{ height: 1000 }}>
             <HeaderComp
                 name={ScreenName}
             />

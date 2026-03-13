@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import HeaderComp from './HeaderComp'
 import DropDownPicker from 'react-native-dropdown-picker'
@@ -12,15 +12,14 @@ function Register() {
     const ScreenName = "Register"
 
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
+    const [value, setValue] = useState('');
 
     const [items, setItems] = useState([
-        { label: 'Trendyol Süper Lig', value: 'TSL'},
-        { label: 'Trendyol 1.Lig', value: 'TL' },
-
+        { label: 'Trendyol Süper Lig', value: 'TSL' },
+        { label: 'Trendyol 1.Lig', value: 'TL' }
     ]);
 
-    const allTeams = [
+    const SuperTeams = [
         { label: 'GALATASARAY A.Ş', lig: 'TSL', value: 'gs' },
         { label: 'FENERBAHÇE A.Ş', lig: 'TSL', value: 'fb' },
         { label: 'TRABZONSPOR A.Ş', lig: 'TSL', value: 'ts' },
@@ -39,6 +38,8 @@ function Register() {
         { label: 'KASIMPAŞA A.Ş', lig: 'TSL', value: 'kp' },
         { label: 'ZECORNER KAYSERİSPOR', lig: 'TSL', value: 'zks' },
         { label: 'MISIRLI.COM.TR FATİH KARAGÜMRÜK', lig: 'TSL', value: 'mfk' },
+    ]
+    const FirstTeams = [
         { label: 'ERZURUMSPOR FK', lig: 'TL', value: 'es' },
         { label: 'ESENLER EROKSPOR', lig: 'TL', value: 'ees' },
         { label: 'AMED SPORTİF FAALİYETLER', lig: 'TL', value: 'asf' },
@@ -58,45 +59,28 @@ function Register() {
         { label: 'SERİK SPOR FUTBOL A.Ş', lig: 'TL', value: 'ssf' },
         { label: 'ATAKAŞ HATAYSPOR', lig: 'TL', value: 'atah' },
         { label: 'ADANA DEMİRSPOR A.Ş', lig: 'TL', value: 'ads' },
-
     ]
 
 
     const [open2, setOpen2] = useState(false);
     const [value2, setValue2] = useState(null);
-    const [items2, setItems2] = useState([{label: "", value:""}]);
-
-   const Superlig = allTeams.filter((lig) => lig.lig === "TSL")
-   const BırıncıLıg = allTeams.filter((lig) => lig.lig === "TL")
-
-   const Superlıgtakımlar = Superlig.map((team) => team.label)
-   const BırıncıTakımlar = BırıncıLıg.map((team) => team.label)
-
-   console.log(Superlıgtakımlar);
-   console.log(BırıncıTakımlar);
+    const [items2, setItems2] = useState([{ label: '', value: '' }]);
 
 
-   
 
-    // const ligSecildi = (items) => {
-    //     if (items.value == "TSL") {
+    useEffect(() => {
+        if (value === 'TSL') {
+            setItems2(SuperTeams)
+        } else if (value === 'TL') {
+            setItems2(FirstTeams)
+        }
+    }, [value])
 
-            
-    //     }
-
-
-    // }
-    // const filtreliTakimlar = allTeams.filter(team => team.lig === lig)
-
-    // setItems2(filtreliTakimlar)
-
-    // setValue2(null)
 
 
     return (
         <View style={style.container}>
             <HeaderComp name={ScreenName} />
-            <TextInput style={style.input}></TextInput>
             <TextInput style={style.input} placeholder='İsim'></TextInput>
             <TextInput style={style.input} placeholder='Soyisim'></TextInput>
             <View style={style.telefon}>
@@ -115,6 +99,7 @@ function Register() {
                 zIndex={3000}
                 zIndexInverse={1000}
                 placeholder='Lig Seçiniz'
+                style={{ marginBottom: 15 }}
             />
             <DropDownPicker
                 open={open2}
@@ -127,6 +112,7 @@ function Register() {
                 zIndexInverse={2000}
                 maxHeight={100}
                 placeholder='Takım Seçiniz'
+                style={{ marginBottom: 15 }}
             />
 
             <TouchableOpacity style={style.button}>
