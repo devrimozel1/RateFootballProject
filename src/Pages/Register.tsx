@@ -15,6 +15,27 @@ function Register() {
     const navigation = useNavigation()
     const ScreenName = "Register"
 
+    const [name, setName] = useState("");
+    const [surname, setSurname] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [error, setError] = useState("");
+
+
+
+    const validate = () => {
+  
+        if (!name || !surname || !phone || !email || !password) {
+            setError("Lütfen tüm alanları doldurunuz.")
+            
+        } else {
+            navigation.navigate('Profile',)
+        }
+
+    }
+
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
 
@@ -81,14 +102,15 @@ function Register() {
 
     return (
         <View style={style.container}>
-            <TextInput style={style.input} placeholder='İsim'></TextInput>
-            <TextInput style={style.input} placeholder='Soyisim'></TextInput>
+            <HeaderComp name={ScreenName} />
+            <TextInput style={style.input} placeholder='İsim' onChangeText={(text) => setName(text)}></TextInput>
+            <TextInput style={style.input} placeholder='Soyisim' onChangeText={(text) => setSurname(text)}></TextInput>
             <View style={style.telefon}>
                 <TextInput style={style.telInput} placeholder='🇹🇷+90'></TextInput>
-                <TextInput style={style.telInput2} placeholder='Telefon Numarası'></TextInput>
+                <TextInput style={style.telInput2} placeholder='Telefon Numarası' onChangeText={(text) => setPhone(text)}></TextInput>
             </View>
-            <TextInput style={style.input} placeholder='E-mail'></TextInput>
-            <TextInput style={style.input} placeholder='Şifre'></TextInput>
+            <TextInput style={style.input} placeholder='E-mail' onChangeText={(text) => setEmail(text)}></TextInput>
+            <TextInput style={style.input} placeholder='Şifre' onChangeText={(text) => setPassword(text)}></TextInput>
             <DropDownPicker
                 open={open}
                 value={value}
@@ -115,7 +137,12 @@ function Register() {
                 style={{ marginBottom: 15 }}
             />
 
-            <TouchableOpacity style={style.button}>
+            <Text style={{ color: "red", marginBottom: 10 }}>
+                {error}
+            </Text>
+
+
+            <TouchableOpacity onPress={validate} style={style.button}>
                 <Text style={style.buttonText}>Kayıt Ol</Text>
             </TouchableOpacity>
 
@@ -124,9 +151,6 @@ function Register() {
             }} style={style.buttonalttext}><Text>Zaten üye misiniz? <Text style={style.title2}>Giriş yapın.</Text></Text></TouchableOpacity>
 
         </View>
-
-
-
 
 
     )
