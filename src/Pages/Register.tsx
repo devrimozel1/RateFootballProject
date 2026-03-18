@@ -1,18 +1,25 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, NavigationProp } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { Alert, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import HeaderComp from './HeaderComp'
 import DropDownPicker from 'react-native-dropdown-picker'
 import { Teams } from '../Teams/Teams'
+import { useDispatch } from 'react-redux'
+import { addTeamname } from '../redux/RateSlice'
 
+type RootStackParamList = {
+    Profile: undefined;
+};
 
 function Register() {
+
+    const dispatch = useDispatch()
 
     const takımlar = Teams
 
 
-    const navigation = useNavigation()
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>()
     const ScreenName = "Register"
 
     const [name, setName] = useState("");
@@ -24,15 +31,16 @@ function Register() {
     const [error, setError] = useState("");
 
 
-
     const validate = () => {
-  
+
         if (!name || !surname || !phone || !email || !password) {
             setError("Lütfen tüm alanları doldurunuz.")
-            
+
         } else {
             navigation.navigate('Profile',)
         }
+        navigation.navigate("Profile")
+        dispatch(addTeamname(value2))
 
     }
 
@@ -45,45 +53,45 @@ function Register() {
     ]);
 
     const SuperTeams = [
-        { label: 'GALATASARAY A.Ş', lig: 'TSL', value: 'GS' },
-        { label: 'FENERBAHÇE A.Ş', lig: 'TSL', value: 'FB' },
-        { label: 'TRABZONSPOR A.Ş', lig: 'TSL', value: 'TS' },
-        { label: 'BEŞİKTAŞ', lig: 'TSL', value: 'BJK' },
-        { label: 'RAMS BAŞAKŞEHİR FUTBOL KULÜBÜ', lig: 'TSL', value: 'BFK' },
-        { label: 'GÖZTEPE A.Ş', lig: 'TSL', value: 'GOZ' },
-        { label: 'KOCAELİSPOR', lig: 'TSL', value: 'KOC' },
-        { label: 'SAMSUNSPOR A.Ş', lig: 'TSL', value: 'SAM' },
-        { label: 'ÇAYKUR RİZESPOR A.Ş', lig: 'TSL', value: 'CRZ' },
-        { label: 'GAZİANTEP FUTBOL KULÜBÜ A.Ş', lig: 'TSL', value: 'GFK' },
-        { label: 'CORENDON ALANYASPOR', lig: 'TSL', value: 'ALN' },
-        { label: 'NATURA DÜNYASI GENÇLERBİRLİĞİ', lig: 'TSL', value: 'GNC' },
-        { label: 'TÜMOSAN KONYASPOR', lig: 'TSL', value: 'KON' },
-        { label: 'HESAP.COM ANTALYASPOR', lig: 'TSL', value: 'ANT' },
-        { label: 'İKAS EYÜPSPOR', lig: 'TSL', value: 'EYS' },
-        { label: 'KASIMPAŞA A.Ş', lig: 'TSL', value: 'KAS' },
-        { label: 'ZECORNER KAYSERİSPOR', lig: 'TSL', value: 'KAY' },
-        { label: 'MISIRLI.COM.TR FATİH KARAGÜMRÜK', lig: 'TSL', value: 'FKG' },
+        { label: 'GALATASARAY A.Ş', lig: 'TSL', value: 'GALATASARAY A.Ş' },
+        { label: 'FENERBAHÇE A.Ş', lig: 'TSL', value: 'FENERBAHÇE A.Ş' },
+        { label: 'TRABZONSPOR A.Ş', lig: 'TSL', value: 'TRABZONSPOR A.Ş' },
+        { label: 'BEŞİKTAŞ J.K', lig: 'TSL', value: 'BEŞİKTAŞ J.K' },
+        { label: 'RAMS BAŞAKŞEHİR FUTBOL KULÜBÜ', lig: 'TSL', value: 'RAMS BAŞAKŞEHİR FUTBOL KULÜBÜ' },
+        { label: 'GÖZTEPE A.Ş', lig: 'TSL', value: 'GÖZTEPE A.Ş' },
+        { label: 'KOCAELİSPOR', lig: 'TSL', value: 'KOCAELİSPOR' },
+        { label: 'SAMSUNSPOR A.Ş', lig: 'TSL', value: 'SAMSUNSPOR A.Ş' },
+        { label: 'ÇAYKUR RİZESPOR A.Ş', lig: 'TSL', value: 'ÇAYKUR RİZESPOR A.Ş' },
+        { label: 'GAZİANTEP FUTBOL KULÜBÜ A.Ş', lig: 'TSL', value: 'GAZİANTEP FUTBOL KULÜBÜ A.Ş' },
+        { label: 'CORENDON ALANYASPOR', lig: 'TSL', value: 'CORENDON ALANYASPOR' },
+        { label: 'NATURA DÜNYASI GENÇLERBİRLİĞİ', lig: 'TSL', value: 'NATURA DÜNYASI GENÇLERBİRLİĞİ' },
+        { label: 'TÜMOSAN KONYASPOR', lig: 'TSL', value: 'TÜMOSAN KONYASPOR' },
+        { label: 'HESAP.COM ANTALYASPOR', lig: 'TSL', value: 'HESAP.COM ANTALYASPO' },
+        { label: 'İKAS EYÜPSPOR', lig: 'TSL', value: 'İKAS EYÜPSPOR' },
+        { label: 'KASIMPAŞA A.Ş', lig: 'TSL', value: 'KASIMPAŞA A.Ş' },
+        { label: 'ZECORNER KAYSERİSPOR', lig: 'TSL', value: 'ZECORNER KAYSERİSPOR' },
+        { label: 'MISIRLI.COM.TR FATİH KARAGÜMRÜK', lig: 'TSL', value: 'MISIRLI.COM.TR FATİH KARAGÜMRÜK' },
     ]
     const FirstTeams = [
-        { label: 'ERZURUMSPOR FK', lig: 'TL', value: 'ERZ' },
-        { label: 'ESENLER EROKSPOR', lig: 'TL', value: "EES" },
-        { label: 'AMED SPORTİF FAALİYETLER', lig: 'TL', value: 'AMD' },
-        { label: 'ARCA ÇORUM FK', lig: 'TL', value: 'ACF' },
-        { label: 'ATKO GRUP PENDİKSPOR FUTBOL A.Ş', lig: 'TL', value: 'PEN' },
-        { label: 'SİPAY BODRUM FK', lig: 'TL', value: 'BOD' },
-        { label: 'BANDIRMA SPOR', lig: 'TL', value: 'BAN' },
-        { label: 'EMRE GÖKDEMİR İNŞAAT ANKARA KEÇİÖRENGÜCÜ', lig: 'TL', value: 'AKE' },
-        { label: 'ALAGÖZ HOLDİNG IĞDIR FK', lig: 'TL', value: 'IGF' },
-        { label: 'MANİSA FUTBOL KULÜBÜ', lig: 'TL', value: 'MAN' },
-        { label: 'BOLUSPOR', lig: 'TL', value: 'BLS' },
-        { label: 'ÖZELSAN SİVASSPOR', lig: 'TL', value: 'SVS' },
-        { label: 'EMİNEVİM ÜMRANİYESPOR', lig: 'TL', value: 'UMR' },
-        { label: 'İSTANBULSPOR A.Ş', lig: 'TL', value: 'IST' },
-        { label: 'SMS GRUP SARIYERSPOR', lig: 'TL', value: 'SAR' },
-        { label: 'SAKARYASPOR A.Ş', lig: 'TL', value: 'SAK' },
-        { label: 'SERİK SPOR FUTBOL A.Ş', lig: 'TL', value: 'SER' },
-        { label: 'ATAKAŞ HATAYSPOR', lig: 'TL', value: 'HAT' },
-        { label: 'ADANA DEMİRSPOR A.Ş', lig: 'TL', value: 'ADM' },
+        { label: 'ERZURUMSPOR FK', lig: 'TL', value: 'ERZURUMSPOR FK' },
+        { label: 'ESENLER EROKSPOR', lig: 'TL', value: "ESENLER EROKSPOR" },
+        { label: 'AMED SPORTİF FAALİYETLER', lig: 'TL', value: 'AMED SPORTİF FAALİYETLER' },
+        { label: 'ARCA ÇORUM FK', lig: 'TL', value: 'ARCA ÇORUM FK' },
+        { label: 'ATKO GRUP PENDİKSPOR FUTBOL A.Ş', lig: 'TL', value: 'ATKO GRUP PENDİKSPOR FUTBOL A.Ş' },
+        { label: 'SİPAY BODRUM FK', lig: 'TL', value: 'SİPAY BODRUM FK' },
+        { label: 'BANDIRMA SPOR', lig: 'TL', value: 'BANDIRMA SPOR' },
+        { label: 'EMRE GÖKDEMİR İNŞAAT ANKARA KEÇİÖRENGÜCÜ', lig: 'TL', value: 'EMRE GÖKDEMİR İNŞAAT ANKARA KEÇİÖRENGÜCÜ' },
+        { label: 'ALAGÖZ HOLDİNG IĞDIR FK', lig: 'TL', value: 'ALAGÖZ HOLDİNG IĞDIR FK' },
+        { label: 'MANİSA FUTBOL KULÜBÜ', lig: 'TL', value: 'MANİSA FUTBOL KULÜBÜ' },
+        { label: 'BOLUSPOR', lig: 'TL', value: 'BOLUSPOR' },
+        { label: 'ÖZELSAN SİVASSPOR', lig: 'TL', value: 'ÖZELSAN SİVASSPOR' },
+        { label: 'EMİNEVİM ÜMRANİYESPOR', lig: 'TL', value: 'EMİNEVİM ÜMRANİYESPOR' },
+        { label: 'İSTANBULSPOR A.Ş', lig: 'TL', value: 'İSTANBULSPOR A.Ş' },
+        { label: 'SMS GRUP SARIYERSPOR', lig: 'TL', value: 'SMS GRUP SARIYERSPOR' },
+        { label: 'SAKARYASPOR A.Ş', lig: 'TL', value: 'SAKARYASPOR A.Ş' },
+        { label: 'SERİK SPOR FUTBOL A.Ş', lig: 'TL', value: 'SERİK SPOR FUTBOL A.Ş' },
+        { label: 'ATAKAŞ HATAYSPOR', lig: 'TL', value: 'ATAKAŞ HATAYSPOR' },
+        { label: 'ADANA DEMİRSPOR A.Ş', lig: 'TL', value: 'ADANA DEMİRSPOR A.Ş' },
     ]
 
     const [open2, setOpen2] = useState(false);
@@ -100,10 +108,13 @@ function Register() {
 
 
 
+
+
+
     return (
         <View style={style.container}>
-            <TextInput style={style.input} placeholder='İsim'></TextInput>
-            <TextInput style={style.input} placeholder='Soyisim'></TextInput>
+            <TextInput style={style.input} placeholder='İsim' onChangeText={setName}></TextInput>
+            <TextInput style={style.input} placeholder='Soyisim' onChangeText={setSurname}></TextInput>
             <View style={style.telefon}>
                 <TextInput style={style.telInput} placeholder='🇹🇷+90'></TextInput>
                 <TextInput style={style.telInput2} placeholder='Telefon Numarası' onChangeText={(text) => setPhone(text)}></TextInput>

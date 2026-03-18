@@ -9,8 +9,8 @@ import Register from './Register'
 type RootStackParamList = {
   Login: undefined
   Register: undefined
+  Profile: undefined
 }
-
 function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -20,27 +20,27 @@ function Login() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>()
 
   const user = {
-    email: "test@test.com",
+    email: "Test@test.com",
     password: "1234"
   }
 
   const handleLogin = () => {
-
     if (email === user.email && password === user.password) {
       Alert.alert("Giriş başarılı. 🎉")
-      navigation.navigate('Register')
+      navigation.navigate('Profile')
     } else {
       Alert.alert("Email veya şifre hatalı ❌")
+      navigation.navigate("Login")
     }
   }
 
-  const handleRegister=()=>{
+  const handleRegister = () => {
     navigation.navigate('Register')
   }
 
 
   return (
-    <View style={{height:1000}}>
+    <View style={{ height: 1000 }}>
       <HeaderComp
         name={ScreenName}
       />
@@ -63,12 +63,11 @@ function Login() {
     </View>
   )
 }
-
-
 const styles = StyleSheet.create({
   container: {
-    height:1000,
-    gap:10
+    height: 1000,
+    gap: 10,
+    alignItems: "center"
   },
   input: {
     backgroundColor: "white",

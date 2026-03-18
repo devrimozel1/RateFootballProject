@@ -1,8 +1,17 @@
 import React, { useState } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import GalatasarayIcon from "../images/gala.png"
+import { useSelector } from 'react-redux'
+import { Teams } from '../Teams/Teams'
+import { Rating, AirbnbRating } from 'react-native-ratings';
+import Icon from "../images/LogoBall.png"
 
 function Profilecart() {
+    const data = useSelector((state: any) => state.rateReducer.teamname)
+    const bedir = Teams.find((item) => (item.label == data))
+    const ratingCompleted = (rating: any) => {
+        console.log("Rating is: " + rating)
+    }
     const [cliced, setCliced] = useState(false)
 
     const isClick = () => {
@@ -14,36 +23,51 @@ function Profilecart() {
     }
     return (
         <View style={{ alignItems: "center", }}>
-            <TouchableOpacity style={cliced ? style.profilecartlowopen : style.profilecardlow} onPress={isClick}>
-                <Image style={style.teamLogo} source={GalatasarayIcon } resizeMode='contain'></Image>
-                <View style={style.scoreView}><Text style={style.scoreText}>Galatasaray A.Ş</Text></View>
+            <TouchableOpacity style={style.profilecardlow} onPress={isClick}>
+                <Image style={style.teamLogo} source={bedir?.logo} resizeMode='contain'></Image>
+                <View style={style.scoreView}><Text style={style.scoreText}>{data}</Text></View>
             </TouchableOpacity>
-            <View style={cliced ? style.profilecardlong : ""}></View>
+            <View style={style.profilecardlong}>
+                <Rating
+                    type='custom'
+                    ratingImage={Icon}
+                    ratingColor='darkgreen'
+                    ratingBackgroundColor='#17b978'
+                    ratingCount={5}
+                    imageSize={50}
+                    style={{ paddingVertical: 10,marginBottom:350, width:300}}
+                    onFinishRating={ratingCompleted}
+
+                />
+
+            </View>
         </View>
     )
 }
 
 const style = StyleSheet.create({
 
-   profilecardlow: {
+    profilecardlow: {
         height: 100,
-        borderRadius: 20,
         width: "90%",
         backgroundColor: "#17b978",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent:"flex-start"
+        justifyContent: "center",
+        borderStartEndRadius: 20,
+        borderStartStartRadius: 20
     },
 
     profilecartlowopen: {
         height: 100,
         width: "90%",
         backgroundColor: "#17b978",
-        justifyContent: "flex-start",
+        justifyContent: "center",
         flexDirection: "row",
         alignItems: "center",
         borderTopLeftRadius: 20,
         borderTopEndRadius: 20
+
 
     },
 
@@ -72,11 +96,11 @@ const style = StyleSheet.create({
     },
 
     scoreText: {
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: "bold",
         alignItems: "center",
         justifyContent: "center",
-        textAlign: "center"
+        textAlign: "center",
     }
 
 })

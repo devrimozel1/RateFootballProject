@@ -9,19 +9,16 @@ function HomeScreen() {
     const ScreenName = "RateFootball";
 
     return (
-        <View style={{ height: 1000 }}>
+        <View style={{ flex: 1 }}>
             <HeaderComp
                 name={ScreenName}
             />
             <ScrollView>
-                <View style={{ gap: 10, height: 1000 }}>
+                <View style={{ gap: 10, flex: 1, marginBottom: 200 }}>
                     <MatchCard></MatchCard>
                     <MatchCard></MatchCard>
                     <MatchCard></MatchCard>
-
-
-
-
+                    <MatchCard></MatchCard>
                 </View>
             </ScrollView>
         </View>

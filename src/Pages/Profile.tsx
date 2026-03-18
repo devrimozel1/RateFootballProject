@@ -1,10 +1,13 @@
 import React from 'react'
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Alert, Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import HeaderComp from './HeaderComp'
 import Profilecart from '../companents/Profilecart'
+import { useSelector } from 'react-redux'
+import { Teams } from '../Teams/Teams'
+
 
 function Profile() {
-
+  
   const ScreenName = "Profile"
   return (
     <View style={{ height: 1000 }}>
@@ -13,7 +16,7 @@ function Profile() {
       />
       <ScrollView>
         <View style={styles.container}>
-          <Profilecart />
+          <Profilecart/>
         </View>
       </ScrollView>
     </View>
